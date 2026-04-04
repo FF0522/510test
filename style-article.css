@@ -184,16 +184,36 @@ body {
 
 /* --- 科展海報區塊設定 --- */
 .poster-section {
-    background-color: #ffffff; 
-    padding: 80px 20px;
+    background-color: #f8f9fa; /* 淺灰色背景，與深藍摘要區做區隔 */
+    padding: 60px 20px;
     display: flex;
     justify-content: center;
 }
 
 .poster-container {
-    max-width: 900px; /* 海報通常比較窄，寬度設小一點視覺較集中 */
+    max-width: 1000px; /* 海報通常比較窄，寬度設小一點視覺較集中 */
     width: 100%;
     text-align: center;
+}
+
+.poster-container h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* 裝飾標題下方的小橫線 */
+.poster-container h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #465a83; /* 使用與摘要區相同的藍色 */
 }
 
 .poster-wrapper {
