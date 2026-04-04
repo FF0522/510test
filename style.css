@@ -6,6 +6,10 @@
     font-family: "Microsoft JhengHei", sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     padding-top: 70px; /* 預留導覽列高度，避免內容被遮擋 */
     background-color: #f4f4f9;
@@ -36,7 +40,7 @@ body {
 
 .logo img {
     display: block;
-    height: 40px;      /* 你可以根據 Logo 大小調整 */
+    height: 20px;      /* 你可以根據 Logo 大小調整 */
 }
 
 .nav-links {
@@ -54,6 +58,11 @@ body {
     font-size: 16px;
     display: block;
     padding: 10px 0;
+}
+
+.nav-links > .dropdown > a {
+    pointer-events: none; /* 禁用點擊 */
+    cursor: default;     /* 恢復預設指標 */
 }
 
 /* --- 下拉選單 --- */
