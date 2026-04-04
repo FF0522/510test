@@ -60,11 +60,6 @@ body {
     padding: 10px 0;
 }
 
-.nav-links > .dropdown > a {
-    pointer-events: none; /* 禁用點擊 */
-    cursor: default;     /* 恢復預設指標 */
-}
-
 /* --- 下拉選單 --- */
 .dropdown-menu {
     display: none;

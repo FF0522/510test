@@ -55,11 +55,6 @@ html {
     padding: 10px 0;
 }
 
-.nav-links > .dropdown > a {
-    pointer-events: none; /* 禁用點擊 */
-    cursor: default;     /* 恢復預設指標 */
-}
-
 /* --- 下拉選單：同步主畫面邏輯 --- */
 .dropdown-menu {
     display: none; /* 預設隱藏 */
