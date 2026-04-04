@@ -182,6 +182,45 @@ body {
     text-align: justify;       /* 文字左右對齊 */
 }
 
+/* --- 科展海報區塊設定 --- */
+.poster-section {
+    background-color: #ffffff; 
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.poster-container {
+    max-width: 900px; /* 海報通常比較窄，寬度設小一點視覺較集中 */
+    width: 100%;
+    text-align: center;
+}
+
+.poster-wrapper {
+    box-shadow: 0 15px 45px rgba(0,0,0,0.15); /* 讓海報有浮起來的立體感 */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.poster-embed {
+    border: none;
+    display: block;
+}
+
+.poster-hint {
+    background: #f1f1f1;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #465a83;
+}
+
+.poster-hint a {
+    color: #465a83;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* --- PDF 檢視器區塊設定 --- */
 .pdf-section {
     background-color: #f8f9fa; /* 淺灰色背景，與深藍摘要區做區隔 */
