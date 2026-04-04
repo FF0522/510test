@@ -6,6 +6,10 @@
     font-family: "Noto Serif TC", "Microsoft JhengHei", serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* --- 導覽列 Navbar (固定置頂且與主畫面完全一致) --- */
 .navbar {
     position: fixed; 
@@ -49,6 +53,11 @@
     font-size: 16px;
     display: block;
     padding: 10px 0;
+}
+
+.nav-links > .dropdown > a {
+    pointer-events: none; /* 禁用點擊 */
+    cursor: default;     /* 恢復預設指標 */
 }
 
 /* --- 下拉選單：同步主畫面邏輯 --- */
