@@ -7,26 +7,36 @@
 }
 
 body {
-    background-color: #fcfcfc;
+    padding-top: 70px; /* 預留導覽列高度，避免內容被遮擋 */
+    background-color: #f4f4f9;
 }
 
-/* --- 導覽列 Navbar --- */
+/* --- 導覽列 Navbar (主畫面) --- */
 .navbar {
-    position: fixed;
+    position: fixed; /* 固定在最上方 */
     top: 0;
+    left: 0;
     width: 100%;
     height: 70px;
     background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 9999;
     display: flex;
-    justify-content: center; 
+    justify-content: center; /* 讓中間的標籤選單置中 */
     align-items: center;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-    z-index: 1000;
+    padding: 0 50px;
 }
 
 .logo {
-    position: absolute;
-    left: 40px;
+    position: absolute; /* 絕對定位 */
+    left: 20px;         /* 固定在左邊 20px 的位置 */
+    top: 50%;           /* 垂直置中輔助 */
+    transform: translateY(-50%);
+}
+
+.logo img {
+    display: block;
+    height: 40px;      /* 你可以根據 Logo 大小調整 */
 }
 
 .nav-links {
@@ -35,20 +45,18 @@ body {
     gap: 30px;
 }
 
-.nav-links > li {
-    position: relative;
-}
+.nav-links li { position: relative; }
 
-.nav-links > li > a {
+.nav-links a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    font-size: 18px;
-    padding: 25px 15px;
+    font-size: 16px;
     display: block;
+    padding: 10px 0;
 }
 
-/* --- 下拉選單：自動伸縮核心 --- */
+/* --- 下拉選單 --- */
 .dropdown-menu {
     display: none;
     position: absolute;
@@ -56,45 +64,20 @@ body {
     left: 50%;
     transform: translateX(-50%);
     background-color: #ffffff;
-    
-    /* 讓選單寬度剛好等於內容最長的那一行 */
-    width: max-content; 
-    /* 也可以設定一個最小寬度，避免只有兩個字時太窄 */
-    min-width: 120px; 
-    
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    border-radius: 8px;
+    width: max-content;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 4px;
     list-style: none;
     padding: 10px 0;
-    border: 1px solid #eee;
-    overflow: hidden; /* 確保圓角效果 */
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-    animation: fadeIn 0.2s ease;
-}
+.dropdown:hover .dropdown-menu { display: block; }
 
 .dropdown-menu li a {
-    display: block;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #444;
-    font-size: 16px;
-    
-    /* 關鍵：強制文字不換行，這樣選單才會被撐開 */
-    white-space: nowrap; 
-    
-    transition: background 0.2s;
+    padding: 10px 20px;
+    font-weight: normal;
+    white-space: nowrap;
 }
 
-.dropdown-menu li a:hover {
-    background-color: #f4f8ff;
-    color: #007bff;
-}
-
-/* 淡入動畫 */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(-5px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
+.dropdown-menu li a:hover { background-color: #f0f7ff; color: #007bff; }
