@@ -92,15 +92,17 @@ body {
 /* --- 文章內頁專用 Hero 區塊 (保留原本設置) --- */
 .article-hero {
     position: relative;
-    height: 100vh;
+    height: 400px;
     width: 100%;
-    background: url('your-background.jpg') no-repeat center center/cover;
+    background: url('background.png') no-repeat center center/cover;
+    background-size: cover;
+    background-color: #f4e8d1;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
-    margin-top: -70px; /* 抵消 body 的 padding，讓背景圖填滿導覽列後方 */
+    margin-top: 0; /* 抵消 body 的 padding，讓背景圖填滿導覽列後方 */
 }
 
 .overlay {
@@ -110,17 +112,129 @@ body {
     z-index: 1;
 }
 
-.hero-content { position: relative; z-index: 2; }
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    width: 100%;
+    height: 100%; 
+    display: flex;
+    justify-content: center; /* 讓主標題「拒絕鹽上」維持在正中央 */
+    align-items: center;
+ }
 
 .main-title { font-size: 3.5rem; margin-bottom: 10px; }
 .sub-title { font-size: 2rem; margin-bottom: 40px; opacity: 0.9; }
 
+/* --- 重新定位資訊框到右下角，但線條在左側 --- */
 .info-box {
-    text-align: left;
+    position: absolute;      /* 絕對定位 */
+    right: 200px;             /* 距離右邊 50px */
+    bottom: 50px;            /* 距離底部 50px */
+    
+    text-align: left;        /* 文字改回靠左對齊，配合左側線條 */
     display: inline-block;
-    border-left: 2px solid white;
-    padding-left: 20px;
+    
+    border-left: 2px solid white;  /* 白線回到左邊 */
+    border-right: none;            /* 確保右邊沒有線 */
+    
+    padding-left: 20px;      /* 文字與左線的間距 */
+    padding-right: 0;
     line-height: 1.8;
+
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-.info-box p span { font-weight: bold; margin-left: 10px; }
+/* 調整姓名標籤與內容的間距 */
+.info-box p span { 
+    font-weight: bold; 
+    margin-left: 10px;      /* 讓冒號後的內容往右縮一點 */
+    margin-right: 0;
+}
+
+
+/* --- 摘要區塊設定 --- */
+.abstract-section {
+    background-color: #465a83; /* 你指定的底色 */
+    color: #ffffff;            /* 白色文字 */
+    padding: 60px 20px;       /* 上下留白 60px，左右留白 20px */
+    width: 100%;
+    display: flex;
+    justify-content: center;   /* 水平置中 */
+}
+
+.abstract-section .text-container {
+    max-width: 900px;         /* 限制文字寬度，方便閱讀 */
+    width: 100%;
+    line-height: 1.8;         /* 增加行高，提升閱讀舒適度 */
+}
+
+.abstract-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* 淡淡的底線增加層次感 */
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.abstract-section p {
+    font-size: 1.1rem;
+    text-align: justify;       /* 文字左右對齊 */
+}
+
+/* --- PDF 檢視器區塊設定 --- */
+.pdf-section {
+    background-color: #f8f9fa; /* 淺灰色背景，與深藍摘要區做區隔 */
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pdf-container {
+    max-width: 1000px; /* 檢視器寬度可以稍微比文字寬一點 */
+    width: 100%;
+    text-align: center;
+}
+
+.pdf-container h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* 裝飾標題下方的小橫線 */
+.pdf-container h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: #465a83; /* 使用與摘要區相同的藍色 */
+}
+
+/* 讓 PDF 檢視器有一點陰影感 */
+embed {
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 4px;
+}
+
+.download-link {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.download-link a {
+    color: #465a83;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.download-link a:hover {
+    text-decoration: underline;
+}
