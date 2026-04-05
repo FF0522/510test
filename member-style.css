@@ -1,0 +1,148 @@
+/* =========================================
+   成員介紹頁面專用 CSS (頂部滿版 + 下方內容留白)
+   ========================================= */
+
+/* --- 1. 全域基礎設定 --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* 防止水平捲軸 */
+    background-color: #f9f9fb; /* 淺灰色底，讓白色文字區塊更明顯 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Serif TC', serif !important;
+}
+
+body {
+    padding-top: 70px; 
+}
+
+/* --- 2. 頂部 Hero 區塊：設定為「完全滿版」 --- */
+.page-header {
+    position: relative;
+    height: 400px;
+    width: 100vw;           /* 強制佔滿視窗寬度 */
+    margin-left: calc(-50vw + 50%); /* 修正置中偏移，確保真正滿版 */
+    margin-top: -70px;      /* 抵消 body padding，讓背景貼齊頂部 */
+    background: url('background.png') no-repeat center center / cover;
+    background-color: #f4e8d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1;
+    margin-bottom: 80px;
+}
+
+.page-header::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.15); /* 深色遮罩 */
+    z-index: 1;
+}
+
+.page-header h1 {
+    position: relative;
+    z-index: 2;
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: 15px;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- 3. 下方內容容器：設定「固定寬度」來產生左右留白 --- */
+.member-container {
+    max-width: 1100px;      /* 這裡控制內容的寬度，數值愈小留白愈多 */
+    margin: 0 auto;         /* 置中 */
+    padding: 80px 20px;     /* 上下間距 80px，左右安全邊距 20px */
+}
+
+/* --- 4. 成員內容排版 (不擁擠的關鍵) --- */
+.member-section {
+    display: flex;
+    align-items: center;    /* 垂直居中 */
+    justify-content: space-between;
+    margin-bottom: 120px;   /* 組與組之間的垂直間距拉大，增加呼吸感 */
+    gap: 60px;              /* 圖片與文字之間的間距 */
+}
+
+.member-section:nth-child(even) {
+    flex-direction: row-reverse; /* 交錯排版 */
+}
+
+/* 文字區塊：純淨、無背景、對齊整齊 */
+.member-text-wrapper {
+    flex: 1;
+    text-align: left;       /* 改為靠左對齊，閱讀感較專業 */
+}
+
+.group-title {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #8b6e4b;         /* 典雅的標題顏色 */
+    font-weight: 900;
+    letter-spacing: 4px;
+    border-bottom: 3px solid #8b6e4b; /* 加入簡潔的底線裝飾 */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.group-list h3 {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #444;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+/* --- 5. 圖片區塊：增加邊距與陰影感 --- */
+.member-image-wrapper {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+}
+
+.member-photo {
+    width: 100%;
+    max-width: 450px;       /* 限制圖片最大寬度，避免過大產生擁擠感 */
+    height: auto;
+    border-radius: 20px;    /* 圓角讓視覺更柔和 */
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1); /* 柔和的大陰影，營造懸浮感 */
+    transition: transform 0.4s ease;
+}
+
+.member-photo:hover {
+    transform: translateY(-10px); /* 互動浮動效果 */
+}
+
+/* --- 6. RWD 手機版自適應 --- */
+@media (max-width: 768px) {
+    .member-section {
+        flex-direction: column !important;
+        gap: 30px;
+        margin-bottom: 80px;
+    }
+    
+    .page-header {
+        height: 300px;
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+        letter-spacing: 8px;
+    }
+
+    .member-text-wrapper {
+        text-align: center; /* 手機版文字改為居中 */
+    }
+
+    .group-title {
+        font-size: 2.2rem;
+    }
+}
