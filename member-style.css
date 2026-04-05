@@ -1,16 +1,8 @@
 /* =========================================
-   成員介紹頁面專用 CSS (頂部滿版 + 下方內容留白)
+   成員介紹頁面專用 CSS (最終修正版)
    ========================================= */
 
-/* --- 1. 全域基礎設定 --- */
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; /* 防止水平捲軸 */
-    background-color: #f9f9fb; /* 淺灰色底，讓白色文字區塊更明顯 */
-}
-
+/* --- 1. 徹底消除瀏覽器預設留白 --- */
 * {
     margin: 0;
     padding: 0;
@@ -18,8 +10,14 @@ html, body {
     font-family: 'Noto Serif TC', serif !important;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* 確保不會出現左右捲軸 */
+    background-color: #ffffff;
+}
+
 body {
-    padding-top: 70px; 
+    padding-top: 70px; /* 這裡要跟你的 navbar 高度一致 */
 }
 
 /* --- 2. 頂部 Hero 區塊：設定為「完全滿版」 --- */
@@ -27,27 +25,37 @@ body {
     position: relative;
     height: 400px;
     width: 100vw;           /* 強制佔滿視窗寬度 */
-    margin-left: calc(-50vw + 50%); /* 修正置中偏移，確保真正滿版 */
-    margin-top: -70px;      /* 抵消 body padding，讓背景貼齊頂部 */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;     /* 這兩行配合 width: 100vw 可達成完美滿版 */
+    margin-right: -50vw;
+    
+    margin-bottom: 80px;    /* 關鍵：讓成員介紹標題跟下方內容拉開距離 */
+    
     background: url('background.png') no-repeat center center / cover;
+    background-size: cover;
     background-color: #f4e8d1;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    text-align: center;
     z-index: 1;
-    margin-bottom: 80px;
 }
 
+/* 遮罩設定 */
 .page-header::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.15); /* 深色遮罩 */
+    background: rgba(0, 0, 0, 0.15); /* 0.2 輕微遮罩，讓白字更清楚 */
     z-index: 1;
 }
 
+/* 修正：消除 h1 預設的 margin，這通常是上方白邊的來源 */
 .page-header h1 {
+    margin: 0; 
     position: relative;
     z-index: 2;
     font-size: 3.5rem;
@@ -56,39 +64,39 @@ body {
     text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* --- 3. 下方內容容器：設定「固定寬度」來產生左右留白 --- */
+/* --- 3. 下方內容容器：左右留白不擁擠 --- */
 .member-container {
-    max-width: 1100px;      /* 這裡控制內容的寬度，數值愈小留白愈多 */
-    margin: 0 auto;         /* 置中 */
-    padding: 80px 20px;     /* 上下間距 80px，左右安全邊距 20px */
+    max-width: 1100px;      /* 控制內容寬度，達成左右留白 */
+    margin: 0 auto;         /* 內容居中 */
+    padding: 0 20px;        /* 手機版的安全邊距 */
 }
 
-/* --- 4. 成員內容排版 (不擁擠的關鍵) --- */
+/* --- 4. 成員內容排版 --- */
 .member-section {
     display: flex;
-    align-items: center;    /* 垂直居中 */
+    align-items: center;
     justify-content: space-between;
-    margin-bottom: 120px;   /* 組與組之間的垂直間距拉大，增加呼吸感 */
-    gap: 60px;              /* 圖片與文字之間的間距 */
+    margin-bottom: 120px;   /* 組與組之間的上下間距 */
+    gap: 60px;              /* 圖片與文字之間的水平間距 */
 }
 
 .member-section:nth-child(even) {
     flex-direction: row-reverse; /* 交錯排版 */
 }
 
-/* 文字區塊：純淨、無背景、對齊整齊 */
+/* 文字區塊：純淨簡約 */
 .member-text-wrapper {
     flex: 1;
-    text-align: left;       /* 改為靠左對齊，閱讀感較專業 */
+    text-align: left;
 }
 
 .group-title {
     font-size: 2.8rem;
     margin-bottom: 20px;
-    color: #8b6e4b;         /* 典雅的標題顏色 */
+    color: #8b6e4b;
     font-weight: 900;
     letter-spacing: 4px;
-    border-bottom: 3px solid #8b6e4b; /* 加入簡潔的底線裝飾 */
+    border-bottom: 3px solid #8b6e4b;
     display: inline-block;
     padding-bottom: 5px;
 }
@@ -101,7 +109,7 @@ body {
     margin-top: 15px;
 }
 
-/* --- 5. 圖片區塊：增加邊距與陰影感 --- */
+/* --- 5. 圖片區塊：旁邊留白不擁擠 --- */
 .member-image-wrapper {
     flex: 1.2;
     display: flex;
@@ -110,18 +118,18 @@ body {
 
 .member-photo {
     width: 100%;
-    max-width: 450px;       /* 限制圖片最大寬度，避免過大產生擁擠感 */
+    max-width: 450px;       /* 限制圖片最大寬度 */
     height: auto;
-    border-radius: 20px;    /* 圓角讓視覺更柔和 */
-    box-shadow: 0 15px 45px rgba(0,0,0,0.1); /* 柔和的大陰影，營造懸浮感 */
+    border-radius: 20px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1);
     transition: transform 0.4s ease;
 }
 
 .member-photo:hover {
-    transform: translateY(-10px); /* 互動浮動效果 */
+    transform: translateY(-10px);
 }
 
-/* --- 6. RWD 手機版自適應 --- */
+/* --- 6. 手機版優化 --- */
 @media (max-width: 768px) {
     .member-section {
         flex-direction: column !important;
@@ -131,6 +139,7 @@ body {
     
     .page-header {
         height: 300px;
+        margin-bottom: 50px;
     }
 
     .page-header h1 {
@@ -139,10 +148,6 @@ body {
     }
 
     .member-text-wrapper {
-        text-align: center; /* 手機版文字改為居中 */
-    }
-
-    .group-title {
-        font-size: 2.2rem;
+        text-align: center;
     }
 }
